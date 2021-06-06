@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Standard Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Site Properties -->
+    <title>页面 - 通用模板</title>
+    <link rel="icon" type="image/x-icon" th:href="${loginUser.getAvatar()}"/>
+    <link rel="stylesheet" type="text/css" href="/dist/semantic.css" th:href="@{/dist/semantic.css}">
+    <script src="/js/jquery-3.5.1.min.js" th:src="@{/js/jquery-3.5.1.min.js}"></script>
+    <script src="/dist/semantic.min.js" th:src="@{/dist/semantic.min.js}"></script>
+
+    <!-- Site Specified Style and Script -->
+    <link rel="stylesheet" type="text/css" href="/css/common.css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" href="/css/img_roll.css" th:href="@{/css/img_roll.css}">
+
+    <script src="/js/common.js" th:src="@{/js/common.js}"></script>
+    <script src="/js/img_roll.js" th:src="@{/js/img_roll.js}"></script>
+
+
+</head>
+
+<body>
+
+<!-- 通用顶部栏 header 片段 -->
+<div th:fragment="common_header" class="ui fixed brown large borderless menu">
+    <div class="ui container">
+        <div class="header item">
+            <img class="proj icon" src="/img/cjjpsz.png" alt="Logo">
+            原神Wiki
+        </div>
+        <a href="/mainpage" class="header item">
+            首页
+        </a>
+        <a class="right item">
+            <form style="margin: auto;outline: none" method="get" action="/search" id="searchForm">
+                <div class="ui icon input">
+                    <i class="search link icon"></i>
+                    <input type="text" name="key" placeholder="Search..." onkeypress="(e)=>{if(e.keyCode===13){document.getElementById('searchForm').submit()}}">
+                </div>
+            </form>
+        </a>
+        <a class="item" href="/profile" >
+            <img class="ui avatar image" th:src="${loginUser.getAvatar()}"
+                 alt="Avatar">
+        </a>
+        <a href="/login" class="item">
+            <div class="ui logout icon">登出</div>
+            <i class="sign out alternate icon"></i>
+        </a>
+    </div>
+</div>
+
+<div class="ui main container">
+    <div class="ui stackable grid">
+
+        <div class="ui ten wide column">
+            <h1 align="center" class="ui computer only header">欢迎来到游戏资讯！</h1>
+            <!--            &lt;!&ndash; 通用左侧菜单 menu 片段， index 为传递进来的参数 &ndash;&gt;-->
+            <!--            <div th:fragment="common_menu(index)" class="ui container">-->
+            <div class="ui raised segment">
+                <h1 align="center" >折箭觅踪</h1>
+                <p style="text-align:center">
+                    <img src="/img/news1.jpg">
+                </p>
+                <h2>活动时间</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>2021/05/27 10:00 ~ 2021/06/06 03:59</p>
+
+                <h2>参与条件</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>冒险等阶≥20级   </p>
+
+                <h2>活动玩法</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>活动期间，完成「奇怪的丘丘人」的调查，即可获取璃月特色摆设 纸、原石、大英雄的经验、摩拉等奖励。</p>
+
+                <h2>活动说明</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <P>旅行者需要在丘丘语专家艾拉·马斯克的帮助下，寻找可以沟通的丘丘人，向他们打听「奇怪的丘丘人」的出没线索。</p>
+                <p>完成丘丘人的请求后，他们会将「奇怪的丘丘人」出没时间告诉旅行者，并指出大致地点。在正确的时间段找到并击败「奇怪的丘丘人」即可获得奖励。</p>
+                <p>活动期间，旅行者在多人游戏状态下接取调查任务后，只有主机可以进行任务。</p>
+                <p>活动玩法结束后，已完成「折箭觅踪」任务的旅行者，可在蒙德凯瑟琳处接取「迷失的丘丘」任务，完成任务可获得相应奖励。</p>
+                <p>「迷失的丘丘」任务：2021/06/06 04:00 ~ 2021/06/08 03:59</p>
+
+
+                <h2>活动奖励</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <P>原石 * 60   锦缎华灯-「飞阁流丹」*1   大英雄的经验 * 6 </P>
+                <P>原石 * 60   锦缎布帘 * 1   摩拉 * 60000 </P>
+                <P>原石 * 60   霓裳画帘-「上取红霞」*1   大英雄的经验 * 6 </P>
+                <P>原石 * 60   花团锦屏-「玉簪金壁」*1   摩拉 * 60000 </P>
+                <P>原石 * 60   震晓云天鼓 * 1  大英雄的经验 * 6 </P>
+                <P>原石 * 60   垂樱花灯-「大道锦绣」*1   摩拉 * 60000 </P>
+                <P>原石 * 60   花灯戏台-「笙歌鼎沸」*1   大英雄的经验 * 6</P>
+
+
+                <h2>活动建议</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <P>第一天水中肉，可以选择虾仁。</p>
+                <P>第三天冷光源，可以选择发光髓</p>
+                <P>第四天红色可以选择胡萝卜，蓝色硬物品可以选择星银矿石。</p>
+                <P>第五天种子，可以选择蒲公英籽</p>
+                <P>第六天飞的，可以选择蝴蝶翅膀</p>
+                <P>第七天草黄色，可以选择小麦</p>
+                <P>(可以，不代表必须，可能有其他满足条件的物品)</p>
+            </div>
+
+            <div class="ui raised segment">
+                <h1 align="center">迷城战线</h1>
+                <p style="text-align:center">
+                    <img src="/img/news2.jpg">
+                </p>
+                <h2>活动时间</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>2021/05/21 10:00 ~ 2021/05/31 03:59</p>
+
+                <h2>参与条件</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>冒险等阶≥20级   </p>
+
+                <h2>活动玩法</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>活动期间，旅行者可以使用指定的试用角色编队并挑战6个不同主题的试炼，完成试炼任务可获得原石、大英雄的经验、天赋培养材料等奖励。</p>
+
+                <h2>活动说明</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <P>「迷城战线」共有6种不同主题的试炼，从活动第一天起，每2天解锁2种新试炼。 在「迷城战线」的试炼中，需要在指定时间内寻找并激活所有的「古代符文」，进行「最终挑战」。</p>
+                <p>每个试炼拥有不同的地脉异常，敌人和陷阱机关的分布也有所不同。</p>
+                <p>试炼中只能使用给定的试用角色，也无法产生元素共鸣。</p>
+                <p>若旅行者拥有试用角色，在试炼中，该试用角色将继承旅行者实际拥有角色的命之座层数。</p>
+                <p>若旅行者暂未拥有试用角色，命之座将默认为0层。</p>
+
+                <h2>活动奖励</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>通关1次急坠试炼	  原石 * 70</P>
+                <P>通关1次急坠试炼，且至少完成5个机关挑战(不包括最终挑战)	  大英雄的经验 * 4</P>
+                <P>在急坠试炼中,通过下落攻击击败8名敌人	  「自由」的指引 * 4</P>
+                <P>通关1次急坠试炼，且被陷阱机关击中次数不得超过5次	  摩拉 * 30000</P>
+                <P>通关1次急坠试炼，且剩余时间大于等于6分钟	   精锻用魔矿 * 6 </P>
+                <P>通关1次愈疗试炼	   原石 * 70 </P>
+                <P>通关1次愈疗试炼，且至少完成5个机关挑战(不包括最终挑战)	   大英雄的经验 * 4</P>
+                <P>在愈疗试炼中,累计回复50000点生命值	   「抗争」的指引 * 4</P>
+                <P>在愈疗试炼中,利用元素爆发击败10名敌人	   摩拉 * 30000 </P>
+                <P>通关1次愈疗试炼,且剩余时间大于等于6分钟	   精锻用魔矿 * 6</P>
+                <P>通关1次近接试炼	   原石 * 70 </P>
+                <P>通关1次近接试炼，且至少完成5个机关挑战(不包括最终挑战)	   大英雄的经验 * 4 </P>
+                <P>在近接试炼中,使用普通攻击或重击击败12名敌人	   「诗文」的指引 * 4 </P>
+                <P>在近接试炼中，累计击破6面丘丘人的盾牌	   摩拉 * 30000 </P>
+                <P>通关1次近接试炼，且剩余时间大于等于6分钟	   精锻用魔矿 * 6</P>
+                <P>通关1次远程试炼	   原石 * 70 </P>
+                <P>通关1次远程试炼，且至少完成5个机关挑战(不包括最终挑战)	   大英雄的经验 * 4 </P>
+                <P>在远程试炼中,累计击败8名一定距离以外的敌人	   「繁荣」的指引 * 4 </P>
+                <P>通关1次远程试炼，且受到伤害不超过40次	   摩拉 * 30000 </P>
+                <P>通关1次远程试炼,且剩余时间大于等于6分钟	   精锻用魔矿 * 6 </P>
+                <P>通关1次坚盾试炼	   原石 * 70 </P>
+                <P>通关1次坚盾试炼，且至少完成5个机关挑战(不包括最终挑战)	   大英雄的经验 * 4 </P>
+                <P>在坚盾试炼中, 于护盾庇护下击败10名敌人	   「勤劳」的指引 * 4 </P>
+                <P>通关1次坚盾试炼，且受到伤害不超过30次	   摩拉 * 30000 </P>
+                <P>通关1次坚盾试炼,且剩余时间大于等于6分钟	  精锻用魔矿 * 6</P>
+                <P>通关1次元素试炼	   原石 * 70 </P>
+                <P>通关1次元素试炼，且至少完成5个机关挑战(不包括最终挑战)	   大英雄的经验 * 4</P>
+                <P>在元素试炼中，使用元素反应瘫痪陷阱机关4次	   「黄金」的指引 * 4</P>
+                <P>通关1次元素试炼，且触发至少5种元素反应(不同元素的扩散和结晶反应视为多种)	  摩拉 * 30000 </P>
+                <P>通关1次元素试炼,且剩余时间大于等于6分钟	   精锻用魔矿 * 6 </P>
+
+
+                <h2>活动建议</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <P>1.默认命之座0级，全天赋8级，这才是真正的体验角色，趁现在赶紧体验未有角色。</p>
+                <P>2.未有玩家注意，莫娜元素爆发有增伤，阿贝多元素战技后元素爆发有多段伤害。</p>
+                <P>3.愈疗试炼中回复生命值挑战，请找个火机关烤一烤。</p>
+                <P>4.每次试炼有4个额外挑战，该4个额外挑战随机出现，并不是每一种各一个。</p>
+                <P>5.安柏的元素战技爆弹玩偶，莫娜的水中幻愿具有嘲讽功能。</p>
+            </div>
+
+            <div class="ui raised segment">
+                <h1 align="center">原素烘炉</h1>
+                <p style="text-align:center">
+                    <img src="/img/news3.jpg">
+                </p>
+                <h2>活动时间</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>2020/10/12 10:00 ~ 2020/10/19 03:59</p>
+
+                <h2>参与条件</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>冒险等阶≥20级   完成序章·第二幕「为了没有眼泪的明天」全部任务</p>
+
+                <h2>活动玩法</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>活动期间，旅行者可以使用指定的试用角色编队并挑战6个不同主题的试炼，完成试炼任务可获得原石、大英雄的经验、天赋培养材料等奖励。</p>
+
+                <h2>活动说明</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <P>亲爱的旅行者：</p>
+                <p>「原素烘炉」多人游戏挑战活动现已开启！</p>
+                <p>与其他旅行者互相协助，运输纯元素凝块至「原素烘炉」内，推进炼金进程。完成炼金后，消耗原粹树脂可获取角色经验素材、冒险阅历等秘宝，秘宝按照旅行者自身世界等级进行结算。同时，达成炼金手册内成就，也可获取原石、角色突破素材等宝物。</p>
+
+                <h2>活动奖励</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>炼金手册：</P>
+                <P>在「原素烘炉」处完成1次炼金	  原石  *20</P>
+                <P>在「原素烘炉」处完成5次炼金	  原石  *40</P>
+                <P>在「原素烘炉」处完成10次炼金	  原石  *80</P>
+                <P>在「原素烘炉」处完成20次炼金	  原石  *160</P>
+                <P>共积累10000炼金效率	  涤净青金断片 *1  精锻用魔矿  *1</P>
+                <P>共积累40000炼金效率	  最胜紫晶断片 *1  精锻用魔矿  *2</P>
+                <P>共积累80000炼金效率	  坚牢黄玉断片 *1  精锻用魔矿  *4</P>
+                <P>共积累16000炼金效率	  摩拉  *50000  精锻用魔矿  *8</P>
+                <P>击败5名来犯的敌人	  燃愿玛瑙断片  *1  冒险家的经验  *2</P>
+                <P>击败10名来犯的敌人	  自在松石断片  *1  冒险家的经验  *4</P>
+                <P>击败30名来犯的敌人	  自在松石断片  *1  大英雄的经验  *2</P>
+                <P>击败100名来犯的敌人	  摩拉  *50000  大英雄的经验  *4</P>
+                <P>在启动原素烘炉，并且与队长处在同一世界等级时，在三分钟内达成元素充溢</P>
+                <P>精锻用魔矿  *8  大英雄的经验  *4</p>
+
+                <h2>活动建议</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <P>尽量让元素浸染的两个人去捡晶体。</p>
+                <P>注意丘丘人弓箭手，被弓箭打到会触发元素反应，这样元素块就会消失。</p>
+            </div>
+            <div class="ui raised segment">
+                <h1 align="center">佳肴尚温</h1>
+                <p style="text-align:center">
+                    <img src="/img/news4.jpg">
+                </p>
+                <h2>活动时间</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>2020年12月11日10:00:00-2020年12月18日03:59:59</p>
+
+                <h2>参与条件</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>冒险等阶≥20级   </p>
+
+                <h2>活动玩法</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>近日「猎鹿人」、「望舒客栈」和「万民堂」订单数量激增，店内送货人手不足，正在寻求帮助。 </p>
+                <p>活动期间内，旅行者每天可通过完成「猎鹿人」莎拉、「望舒客栈」言笑、「万民堂」卯师傅处的递送食物限时订单获得奖励，每天完成全部订单还可领取原石奖励！</p>
+
+                <h2>活动说明</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <P>活动期间，旅行者们可以在活动界面中的「佳肴尚温」页面接取来自「猎鹿人」莎拉、「望舒客栈」言笑、「万民堂」卯师傅递送食物的限时订单。</p>
+                <p>每笔递送订单可能会包含一些注意事项（每次若干条），如：限时送达；不可冲刺；不可飞行；不可攀爬；不可受伤；不可沾染元素。</p>
+                <p>接受订单后，倒计时将会开启。旅行者们在递送时不可以违反附加要求，同时需要在倒计时结束前将餐食递送至目标处。否则，将会导致任务失败，需要重新在NPC处接受订单。 友情提示：送餐过程中请注意周围环境，和相关天气。</p>
+
+                <h2>活动奖励</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <p>活动一共持续七日，每日将有三次全新的递送订单。每次完成订单后均可获得对应奖励。完成当日全部三次订单后，还可领取额外奖励。</P>
+                <P>每日4:00订单刷新，奖励也会随之刷新，请旅行者们完成任务后及时领取当日奖励。</P>
+                <P>第一天</P>
+                <P>「猎鹿人」摩拉*30000  落落莓* 5 	「望舒客栈」摩拉*20000  冒险家的经验*4 「万民堂」摩拉*20000  精锻用魔矿*2 	 额外奖励：原石*60</P>
+                <P>第二天</P>
+                <P>「猎鹿人」摩拉*30000  慕风蘑菇* 3 「望舒客栈」摩拉*20000   冒险家的经验*4 「万民堂」摩拉*20000  精锻用魔矿* 2 	 额外奖励：原石*60</P>
+                <P>第三天</P>
+                <P>「猎鹿人」摩拉*20000  冒险家的经验*4 	「望舒客栈」摩拉*30000  琉璃袋*3 	  「万民堂」摩拉*20000  精锻用魔矿*2 	 额外奖励：原石*60 </P>
+                <P>第四天</P>
+                <P>「猎鹿人」摩拉*20000  冒险家的经验 * 4 	 「望舒客栈」摩拉*20000  精锻用魔矿*2  「万民堂」摩拉*30000  石珀*3 	 额外奖励： 原石*60</P>
+                <P>第五天</P>
+                <P>「猎鹿人」摩拉*20000  冒险家的经验*4 	「望舒客栈」摩拉*30000   绝云椒椒*3 「万民堂」摩拉*20000  精锻用魔矿*2 	  额外奖励：原石*60</P>
+                <P>第六天</P>
+                <P>「猎鹿人」摩拉*30000  风车菊*3 	  「望舒客栈」摩拉*20000   冒险家的经验*4 「万民堂」摩拉*20000  精锻用魔矿*2 	  额外奖励：原石*60</P>
+                <P>第七天</P>
+                <P>「猎鹿人」摩拉*20000  冒险家的经验*4 「望舒客栈」 摩拉*30000  琉璃百合*3 「万民堂」摩拉*20000  精锻用魔矿*2 	  额外奖励：原石*60</P>
+
+
+                <h2>活动建议</h2>
+                <div style="border-bottom:5px solid #CCC"></div>
+                <P>蒙德人的优越，临时传送点删除添加。</p>
+                <P>请选择高个子跑路。</p>
+                <P>遇到不可飞行不可受伤的任务，可以利用低空下落攻击或斜坡下滑无伤速降。</p>
+                <P>不能冲刺不代表不能快速游泳，在允许沾染元素时走水路也是一种选择。</p>
+                <P>有些角色带有冲刺体力消耗降低的天赋，在允许冲刺的任务中可以放入队伍。</p>
+                <P>有些角色的护盾技能可以让你免受怪物攻击和来自攻击的元素沾染。</p>
+            </div>
+
+            <form class="ui form" action="/commitChara" method="post" enctype="multipart/form-data">
+                <div class="field">
+                    <label for="profile">
+                        <b>留下你的评论吧</b>
+                    </label>
+                    <input type="hidden" name="userId" th:value="${loginUser.getId()}">
+                    <textarea type="text" id="profile" name="context" maxlength="255"></textarea>
+                </div>
+                <input type="submit" value="确认提交" class="ui fluid large blue submit button"/>
+            </form>
+        </div>
+
+        <div class="ui six wide column">
+<!--            <div class="ui form message">-->
+
+<!--&lt;!&ndash;                <img class="ui image" th:src="${user.getTachie()}">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <div class="container column"></div>&ndash;&gt;-->
+<!--            </div>-->
+            <div class="ui vertical fluid stackable sticky menu container">
+                <a th:class="${index}==1?'active red item':'item'" class="item" href="/Encyclopedia">
+                    <font size="4px">
+                        <b>百科图鉴</b>
+                    </font>
+                    <i class="large book icon"></i>
+                </a>
+                <a th:class="${index}==2?'active red item':'item'" class="item" href="/calculator">
+                    <font size="4px">
+                        <b>养成计算</b>
+                    </font>
+                    <i class="large calculator icon"></i>
+                </a>
+                <a th:class="${index}==3?'active red item':'item'" class="item" href="/news">
+                    <font size="4px">
+                        <b>游戏资讯</b>
+                    </font>
+                    <i class="large newspaper outline icon"></i>
+                </a>
+                <a th:class="${index}==4?'active red item':'item'" class="item" href="/gacha">
+                    <font size="4px">
+                        <b>抽卡模拟</b>
+                    </font>
+                    <i class="large gem outline icon"></i>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- 通用底部 footer 片段 -->
+<div th:fragment="common_footer" class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <p>
+            Copyright © 2021 Temper.
+        </p>
+        <p>
+            All rights reserved.
+        </p>
+        <div class="ui header">
+            <a href="https://github.com/Abyss-of-Dragon/Cjjpsz" class="ui centered image">
+                <i class="large grey github icon"></i>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
